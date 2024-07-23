@@ -1,10 +1,10 @@
 # CrazySim: A Software-in-the-Loop Simulator for the Crazyflie Nano Quadrotor
-This code accompanies the work in the ICRA 2024 accepted paper "CrazySim: A Software-in-the-Loop Simulator for the Crazyflie Nano Quadrotor" [1]. CrazySim is a simulator platform that runs Crazyflie firmware in a simulation state on a desktop machine with integrated communication with Gazebo sensors and physics engine. The simulated Crazyflie firmware is intended to communicate with a custom Crazyflie Python library ([CFLib](https://github.com/bitcraze/crazyflie-lib-python)) provided in this code. This enables simulating the behavior of CFLib scripts that are intended to control single or multiple Crazyflies in a real hardware demonstration. With CFLib communication capabilities, users can choose to use [CrazySwarm2](https://github.com/IMRCLab/crazyswarm2) with CFLib as the backend for a ROS 2 interface with the simulator. In this code we also provide a case study that uses model predictive control (MPC) using [Acados](https://github.com/acados/acados) for decentralized control of Crazyflie drone fleets.
+This Simulator is based on the work in the ICRA 2024 paper "CrazySim: A Software-in-the-Loop Simulator for the Crazyflie Nano Quadrotor" [1]. CrazySim is a simulator platform that runs Crazyflie firmware in a simulation state on a desktop machine with integrated communication with Gazebo sensors and physics engine. The simulated Crazyflie firmware is intended to communicate with a custom Crazyflie Python library ([CFLib](https://github.com/bitcraze/crazyflie-lib-python)) provided in this code. This enables simulating the behavior of CFLib scripts that are intended to control single or multiple Crazyflies in a real hardware demonstration. With CFLib communication capabilities, users can choose to use [CrazySwarm2](https://github.com/IMRCLab/crazyswarm2) with CFLib as the backend for a ROS 2 interface with the simulator.
 
 ![](16cfs.gif)
 
 ## Citation
-If you use CrazySim for an academic publication, then please consider citing our [ICRA2024 paper](https://coogan.ece.gatech.edu/papers/pdf/llanes2024crazysim.pdf) as
+If you use CrazySim for an academic publication, then please cite [ICRA2024 paper](https://coogan.ece.gatech.edu/papers/pdf/llanes2024crazysim.pdf) as
 
 
 ```bibtex
@@ -19,7 +19,7 @@ year = {2024}
 # CrazySim Setup
 
 ## Supported Platforms
-This simulator is currently only supported on Ubuntu systems with at least 20.04. This is primarily a requirement from Gazebo Sim. The simulator was built, tested, and verified on 22.04 with Gazebo Garden.
+This simulator is supported on Ubuntu 20.04.
 
 To install this repository use the recursive command as shown below for HTTPS:
 ```bash
