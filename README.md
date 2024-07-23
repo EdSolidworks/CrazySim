@@ -86,21 +86,14 @@ All the necessary tools should now be installed and the simulator should be read
 cfclient
 ```
 
-## How to use
-Currently, users have to restart Gazebo after each CFLib connect and disconnect cycle. Supporting a restart cycle without restarting Gazebo is on the list of things to do.
-
-### Start up SITL
-Open a terminal and run
+### Running the simulator
+Open a new terminal and run
 ```bash
-cd crazyflie-firmware
+cd CrazyflieSimulator/crazyflie-firmware
 ```
+This will bring the terminal into the directory where all the command codes are located.
 
 We can then run the firmware instance and spawn the models with Gazebo using a launch script. All launch scripts require a model argument `-m`. All currently implemented models are tabulated below.
-
-| Models | Description |
-| --- | --- |
-| crazyflie | The default Crazyflie 2.1. |
-| crazyflie_thrust_upgrade | The Crazyflie 2.1 with thrust upgrade bundle. |
 
 #### Option 1: Spawning a single crazyflie model with initial position (x = 0, y = 0)
 ```bash
@@ -117,14 +110,9 @@ bash tools/crazyflie-simulation/simulator_files/gazebo/launch/sitl_multiagent_sq
 bash tools/crazyflie-simulation/simulator_files/gazebo/launch/sitl_multiagent_text.sh -m crazyflie
 ```
 
-Now you can run any CFLib Python script with URI `udp://0.0.0.0:19850`. For drone swarms increment the port for each additional drone.
+Now you can run any CFLib Python script with URI `udp://0.0.0.0:19850`. For drone swarms increment (i.e. `udp://0.0.0.0:19851`,`udp://0.0.0.0:19852`) the port for each additional drone.
 
-You can also test a single crazyflie using the custom client if you installed it from the crazyflie-clients-python section.
-
-First start up the custom client.
-```bash
-cfclient
-```
+You can test a single crazyflie using the custom client.
 
 Click on the scan button, select the UDP interface, and connect. Once it's connected you can take off and fly using the command based flight controls.
 
@@ -133,77 +121,6 @@ One use case for simulating a crazyflie with the client is real time PID tuning.
 
 https://github.com/gtfactslab/Llanes_ICRA2024/assets/40842920/b865127c-1b0d-4f49-941d-e57aecda9a54
 
-
-
-
-# Crazyswarm2 and Model Predictive Control Case Study
-This section follows the setup of CrazySwarm2 with CrazySim and demonstrating a case study that uses a model predictive controller (MPC) with Acados to track a set of predefined temporally parametrized trajectories.
-
-Make sure you have ROS 2 [Humble](https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debians.html). 
-
-Install the following for Crazyswarm2:
-```bash
-sudo apt install libboost-program-options-dev libusb-1.0-0-dev
-pip3 install rowan transforms3d
-sudo apt install ros-humble-tf-transformations
-```
-
-If you want to run the MPC code then you will need Acados. Acados can be installed by following their [documentation](https://docs.acados.org/installation/index.html).
-
-Then build the ROS 2 workspace.
-```bash
-cd ros2_ws
-colcon build --symlink-install
-```
-
-### Configuration
-The crazyswarm2  configuration files can be found in 
-```bash
-ros2_ws/src/crazyswarm2/crazyflie/config/
-```
-The crazyflies.yaml describes the robots currently being used. If a robot is not in the simulator or hardware, then it can be disabled by setting the enabled parameter to false. A more detailed description for crazyswarm2 configurations can be found [here](https://imrclab.github.io/crazyswarm2/usage.html).
-
-The main code for the MPC script is in the following:
-```bash
-ros2_ws/crazyflie_mpc/crazyflie_mpc/crazyflie_multiagent_mpc.py
-```
-The trajectory type can be changed to a horizontal circle, vertical circle, helix, or a lemniscate trajectory by changing the variable "trajectory_type" in the CrazyflieMPC class. There is also a motors variable in the CrazyflieMPC class that can be changed based on if you defined the crazyflie or crazyflie_thrust_upgrade model.
-
-### Start up the Firmware
-Start up the firmware with any of the 3 launch script options. Below we demonstrate 4 Crazyflies in a square formation.
-```bash
-bash tools/crazyflie-simulation/simulator_files/gazebo/launch/sitl_multiagent_square.sh -n 4 -m crazyflie
-```
-
-### Start Crazyswarm2
-Make sure that `cf_1`, `cf_2`, `cf_3`, and `cf_4` are enabled in the CrazySwarm2 configuration YAML file. Launch the Crazyswarm2 services with CFLib backend.
-```bash
-ros2 launch crazyflie launch.py backend:=cflib
-```
-
-### Start MPC code
-### 
-Run the Crazyflie MPC demonstration with the code below. The argument `n_agents` can be modified for the number of agents in your environment. Additionally, the argument `--build_acados` can be defined to compile the Acados optimal control problem.
-```bash
-ros2 run crazyflie_mpc crazyflie_multiagent_mpc --n_agents=4 --build_acados
-```
-
-Using the command line publisher we can command all vehicles to take off using MPC.
-```bash
-ros2 topic pub -t 1 /all/mpc_takeoff std_msgs/msg/Empty
-```
-
-Using the command line publisher we can command all vehicles to start the trajectory.
-```bash
-ros2 topic pub -t 1 /all/mpc_trajectory std_msgs/msg/Empty
-```
-
-Using the command line publisher we can command all vehicles to stop the trajectory and hover.
-```bash
-ros2 topic pub -t 1 /all/mpc_hover std_msgs/msg/Empty
-```
-
-We also implemented a MPC land feature, but it's still experimental and may result in crashing the drone.
 
 ## Versions
 | Version | Description |
