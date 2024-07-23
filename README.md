@@ -19,16 +19,22 @@ year = {2024}
 # CrazySim Setup
 
 ## Supported Platforms
-This simulator is supported on Ubuntu 20.04.
+This simulator is supported on Ubuntu 22.04.
+The following are instructions for installing the software on a fresh install of Ubuntu 22.04.
+
+Need to install tools used throughout the installation
+```bash
+sudo apt install git python-is-python3 pip
+```
 
 To install this repository use the recursive command as shown below for HTTPS:
 ```bash
-git clone https://github.com/gtfactslab/CrazySim.git --recursive
+git clone https://github.com/EdSolidworks/CrazyflieSimulator.git --recursive
 ```
 
 ## crazyflie-lib-python
 ```bash
-cd crazyflie-lib-python
+cd CrazySim/crazyflie-lib-python
 pip install -e .
 ```
 
