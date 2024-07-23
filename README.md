@@ -58,7 +58,7 @@ Run the following commands to install dependencies.
 sudo apt install cmake build-essential
 pip install Jinja2
 ```
-
+## Gazebo Garden
 To download all the prerequisites of gazebo garden run the following code
 ```bash
 sudo apt-get update
@@ -80,6 +80,7 @@ mkdir -p sitl_make/build && cd $_
 cmake ..
 make all
 ```
+## Running the simulator
 All the necessary tools should now be installed and the simulator should be ready to use. To use the crazyflie client, open a terminal and type in:
 ```bash
 cfclient
