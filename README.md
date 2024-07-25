@@ -27,16 +27,6 @@ Need to install tools used throughout the installation
 sudo apt install git python-is-python3 pip
 ```
 
-For testing purposes to see if the simulator has been installed correctly and works, the crazyflie client will be installed, see the [documentation](https://www.bitcraze.io/documentation/repository/crazyflie-clients-python/master/) for information on the use of the client.
-```bash
-git clone https://github.com/llanesc/crazyflie-clients-python
-cd crazyflie-clients-python
-git checkout sitl-release
-pip install -e .
-cd ..
-```
-This code will clone the repository containing all the required code for the client, then move to that newly downloaded directory. It will change it to the custom simulation version and install the software before exiting back to the initial directory
-
 To install this repository use the recursive command as shown below for HTTPS:
 ```bash
 git clone https://github.com/EdSolidworks/CrazyflieSimulator.git --recursive
@@ -51,6 +41,16 @@ pip install -e .
 cd ..
 ```
 This code installs the python library needed to control the crazyflie
+
+For testing purposes to see if the simulator has been installed correctly and works, the crazyflie client will be installed, see the [documentation](https://www.bitcraze.io/documentation/repository/crazyflie-clients-python/master/) for information on the use of the client.
+```bash
+git clone https://github.com/llanesc/crazyflie-clients-python
+cd crazyflie-clients-python
+git checkout sitl-release
+pip install -e .
+cd ..
+```
+This code will clone the repository containing all the required code for the client, then move to that newly downloaded directory. It will change it to the custom simulation version and install the software before exiting back to the initial directory
 
 ### Dependencies
 Run the following commands to install dependencies.
