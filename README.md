@@ -46,7 +46,7 @@ This code downloads all the code from the github repository and unpacks it.
 
 ## crazyflie-lib-python
 ```bash
-cd CrazySim/crazyflie-lib-python
+cd crazyflie-lib-python
 pip install -e .
 cd ..
 ```
