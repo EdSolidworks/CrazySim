@@ -26,7 +26,19 @@ Need to install tools used throughout the installation
 ```bash
 sudo apt install git python-is-python3 pip
 ```
+## [MODIFIED] cfclient
+For testing purposes to see if the simulator has been installed correctly and works, the crazyflie client will be installed, see the [documentation](https://www.bitcraze.io/documentation/repository/crazyflie-clients-python/master/) for information on the use of the client.
+DO NOT USE THIS CLIENT WITH REAL REAL CRAZYFLIE HARDWARE
+```bash
+git clone https://github.com/llanesc/crazyflie-clients-python
+cd crazyflie-clients-python
+git checkout sitl-release
+pip install -e .
+cd ..
+```
+This code will clone the repository containing all the required code for the client, then move to that newly downloaded directory. It will change it to the custom simulation version and install the software before exiting back to the initial directory
 
+### Crazyflie simulator code
 To install this repository use the recursive command as shown below for HTTPS:
 ```bash
 git clone https://github.com/EdSolidworks/CrazyflieSimulator.git --recursive
@@ -41,16 +53,6 @@ pip install -e .
 cd ..
 ```
 This code installs the python library needed to control the crazyflie
-
-For testing purposes to see if the simulator has been installed correctly and works, the crazyflie client will be installed, see the [documentation](https://www.bitcraze.io/documentation/repository/crazyflie-clients-python/master/) for information on the use of the client.
-```bash
-git clone https://github.com/llanesc/crazyflie-clients-python
-cd crazyflie-clients-python
-git checkout sitl-release
-pip install -e .
-cd ..
-```
-This code will clone the repository containing all the required code for the client, then move to that newly downloaded directory. It will change it to the custom simulation version and install the software before exiting back to the initial directory
 
 ### Dependencies
 Run the following commands to install dependencies.
@@ -80,13 +82,11 @@ mkdir -p sitl_make/build && cd $_
 cmake ..
 make all
 ```
-## Running the simulator
+### Running the simulator
 All the necessary tools should now be installed and the simulator should be ready to use. To use the crazyflie client, open a terminal and type in:
 ```bash
 cfclient
 ```
-
-### Running the simulator
 Open a new terminal and run
 ```bash
 cd CrazyflieSimulator/crazyflie-firmware
@@ -121,6 +121,11 @@ One use case for simulating a crazyflie with the client is real time PID tuning.
 
 https://github.com/gtfactslab/Llanes_ICRA2024/assets/40842920/b865127c-1b0d-4f49-941d-e57aecda9a54
 
+### Running a python script on the simulator
+Locate the folder containing the code in the file explorer, right click on the address and click open in terminal. This will open the folder in a terminal, from there type in: python 
+followed by the filename of the file you want to run.
+This is an example: python 4_takeoff.py
+This would run the code in the file 4_takeoff.py
 
 ## Versions
 | Version | Description |
