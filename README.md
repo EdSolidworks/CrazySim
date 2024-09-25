@@ -114,11 +114,12 @@ bash tools/crazyflie-simulation/simulator_files/gazebo/launch/sitl_multiagent_te
 ```
 
 Now you can run any CFLib Python script with URI `udp://0.0.0.0:19850`. For drone swarms increment (i.e. `udp://0.0.0.0:19851`,`udp://0.0.0.0:19852`) the port for each additional drone.
-You can run python scripts set up for the drone using the following example:
-Open and new terminal and locate the folder containing the python script, or open it up in file explorer, right click on the address bar and hit open in terminal. Then input the following changing as needed:
-```bash
-python YOURCODEHERE
-```
+
+### Running a python script on the simulator
+Locate the folder containing the code in the file explorer, right click on the address and click open in terminal. This will open the folder in a terminal, from there type in: python 
+followed by the filename of the file you want to run.
+This is an example: python 4_takeoff.py
+This would run the code in the file 4_takeoff.py
 
 You can test a single crazyflie using the custom client.
 
@@ -129,11 +130,6 @@ One use case for simulating a crazyflie with the client is real time PID tuning.
 
 https://github.com/gtfactslab/Llanes_ICRA2024/assets/40842920/b865127c-1b0d-4f49-941d-e57aecda9a54
 
-### Running a python script on the simulator
-Locate the folder containing the code in the file explorer, right click on the address and click open in terminal. This will open the folder in a terminal, from there type in: python 
-followed by the filename of the file you want to run.
-This is an example: python 4_takeoff.py
-This would run the code in the file 4_takeoff.py
 
 ## Versions
 | Version | Description |
