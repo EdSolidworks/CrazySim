@@ -87,6 +87,9 @@ All the necessary tools should now be installed and the simulator should be read
 ```bash
 cfclient
 ```
+To run the crazylfie client and manually control the drone. Read on for alternative options for controlling the crazyflie.
+
+## To open the simulator:
 Open a new terminal and run
 ```bash
 cd CrazyflieSimulator/crazyflie-firmware
@@ -111,6 +114,11 @@ bash tools/crazyflie-simulation/simulator_files/gazebo/launch/sitl_multiagent_te
 ```
 
 Now you can run any CFLib Python script with URI `udp://0.0.0.0:19850`. For drone swarms increment (i.e. `udp://0.0.0.0:19851`,`udp://0.0.0.0:19852`) the port for each additional drone.
+You can run python scripts set up for the drone using the following example:
+Open and new terminal and locate the folder containing the python script, or open it up in file explorer, right click on the address bar and hit open in terminal. Then input the following changing as needed:
+```bash
+python YOURCODEHERE
+```
 
 You can test a single crazyflie using the custom client.
 
